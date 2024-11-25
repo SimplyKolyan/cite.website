@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Викторина по истории Асбеста</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Стили для викторины */
+        .quiz-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-question {
+            margin-bottom: 20px;
+        }
+
+        .quiz-answer {
+            margin-bottom: 10px;
+        }
+
+        .quiz-answer button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .quiz-answer button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Викторина по истории Асбеста</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="history.html">История города</a></li>
+                <li><a href="attractions.html">Достопримечательности</a></li>
+                <li><a href="enterprises.html">Предприятия</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+                <li><a href="about.html">О нас</a></li>
+		<li><a href="quiz.html">Викторина</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="quiz-container">
+            <h2>Викторина по истории Асбеста</h2>
+            <div id="quiz-questions"></div>
+            <button id="check-button" class="btn">Проверить результат</button>
+            <div id="result-container" class="result"></div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2023 Город Асбест. Все права защищены.</p>
+    </footer>
+
+    <script>
+        const questions = [
+            {
+                question: "Когда был основан город Асбест?",
+                answers: [
+                    { text: "1920", correct: true },
+                    { text: "1930", correct: false },
+                    { text: "1940", correct: false }
+                ]
+            },
+            {
+                question: "Какой минерал добывается в Асбесте?",
+                answers: [
+                    { text: "Мрамор", correct: false },
+                    { text: "Асбест", correct: true },
+                    { text: "Золото", correct: false }
+                ]
+            },
+            {
+                question: "Какое название носит река, протекающая через Асбест?",
+                answers: [
+                    { text: "Тура", correct: false },
+                    { text: "Чусовая", correct: false },
+                    { text: "Асбест", correct: true }
+                ]
+            },
+            {
+                question: "Какой завод является одним из крупнейших в Асбесте?",
+                answers: [
+                    { text: "Асбестовский завод", correct: true },
+                    { text: "Кировский завод", correct: false },
+                    { text: "Уралмаш", correct: false }
+                ]
+            },
+            {
+                question: "Какой памятник архитектуры находится в Асбесте?",
+                answers: [
+                    { text: "Церковь Святого Николая", correct: true },
+                    { text: "Кремль", correct: false },
+                    { text: "Золотые ворота", correct: false }
+                ]
+            },
+            {
+                question: "Какой год считается годом присвоения Асбесту статуса города?",
+                answers: [
+                    { text: "1933", correct: true },
+                    { text: "1925", correct: false },
+                    { text: "1945", correct: false }
+                ]
+            },
+            {
+                question: "Какой вид спорта популярен в Асбесте?",
+                answers: [
+                    { text: "Футбол", correct: false },
+                    { text: "Хоккей", correct: true },
+                    { text: "Теннис", correct: false }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        const quizQuestions = document.getElementById('quiz-questions');
+        const checkButton = document.getElementById('check-button');
+        const resultContainer = document.getElementById('result-container');
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            resultContainer.innerText = '';
+            showQuestion(questions[currentQuestionIndex]);
+        }
+
+        function showQuestion(question) {
+            quizQuestions.innerHTML = '';
+            const questionElement = document.createElement('div');
+            questionElement.innerText = question.question;
+            quizQuestions.appendChild(questionElement);
+
+            question.answers.forEach(answer => {
+                const button = document.createElement('button');
+                button.innerText = answer.text;
+                button.addEventListener('click', () => selectAnswer(answer));
+                quizQuestions.appendChild(button);
+            });
+        }
+
+        function selectAnswer(answer) {
+            if (answer.correct) {
+                score++;
+            }
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion(questions[currentQuestionIndex]);
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            quizQuestions.innerHTML = '';
+            resultContainer.innerText = `Ваш результат: ${score} из ${questions.length}`;
+        }
+
+        checkButton.addEventListener('click', () => {
+            showResult();
+        });
+
+        startQuiz();
+    </script>
+</body>
+</html>

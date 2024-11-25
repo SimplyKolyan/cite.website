@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты Асбеста</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Стили для раздела "Контакты" */
+        .contacts form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .contacts input,
+        .contacts textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contacts button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Контакты Асбеста</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="history.html">История города</a></li>
+                <li><a href="attractions.html">Достопримечательности</a></li>
+                <li><a href="enterprises.html">Предприятия</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+                <li><a href="about.html">О нас</a></li>
+		<li><a href="quiz.html">Викторина</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="contacts">
+            <h2>Администрация города Асбеста</h2>
+            <address>
+                <strong>Адрес:</strong> г. Асбест, ул. Ленина, д. 10<br>
+                <strong>Телефон:</strong> +7 (34365) 12345<br>
+                <strong>Электронная почта:</strong> <a href="mailto:info@asbest-city.ru">info@asbest-city.ru</a>
+            </address>
+            
+            <form action="#" method="post">
+                <label for="name">Ваше имя:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Ваш email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Сообщение:</label>
+                <textarea id="message" name="message" rows="4" cols="50" required></textarea>
+                
+                <button type="submit">Отправить</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2023 Город Асбест. Все права защищены.</p>
+    </footer>
+</body>
+</html>
